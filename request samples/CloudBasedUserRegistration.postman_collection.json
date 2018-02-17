@@ -1,0 +1,384 @@
+{
+	"variables": [],
+	"info": {
+		"name": "CloudBasedUserRegistration",
+		"_postman_id": "da286aae-7c74-47d3-fd44-0811932f1946",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:4444/auth/clients",
+			"request": {
+				"url": "http://localhost:4444/auth/clients",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"clientId\": \"gateway\",\n\t\"scopes\": \"FOO, YOO\",\n\t\"authorities\": \"FOO_READ, FOO_WRITE\",\n\t\"authorizedGrantTypes\": \"implicit, refresh_token, password, authorization_code, client_credentials\",\n\t\"isAutoApprove\": true,\n\t\"resourceId\": \"FOO, DOO, YOO, account-resource\",\n\t\"accessTokenValiditySeconds\": 500000,\n    \"refreshTokenValiditySeconds\": 1000000,\n    \"clientSecret\": \"1234\",\n    \"redirectUri\": \"http://example.com\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:4444/auth/oauth/token",
+			"request": {
+				"url": "http://localhost:4444/auth/oauth/token",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic Z2F0ZXdheToxMjM0",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_id",
+							"value": "gateway",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "client_secret",
+							"value": "1234",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "mapaez",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "text"
+						},
+						{
+							"key": "response_type",
+							"value": "code",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "redirect_uri",
+							"value": "http://localhost:9999/oauth/token",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "code",
+							"value": "1f229f1b-c173-4d1a-bd29-703fb53d9681",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4444/accounts/search/findByUsername?username=Antonio",
+			"request": {
+				"url": {
+					"raw": "http://localhost:4444/accounts/search/findByUsername?username=Antonio",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4444",
+					"path": [
+						"accounts",
+						"search",
+						"findByUsername"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "Antonio",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsiRE9PIiwiRk9PIiwiWU9PIiwiYWNjb3VudC1yZXNvdXJjZSJdLCJ1c2VyX25hbWUiOiJtYXBhZXoiLCJzY29wZSI6WyJGT08iLCJZT08iXSwiZXhwIjoxNTE5MzA5NDc4LCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOLCBST0xFX1VTRVIsIEZPT19SRUFEX1VTRVIiXSwianRpIjoiY2JhNWViMjAtMDFjYy00ODVlLWExNmUtM2ExYjczNThmODVjIiwiY2xpZW50X2lkIjoiZ2F0ZXdheSJ9.gYl5aEKN4TfgprZULxRIIBrVehhCJKxa25ZNaevsVkgDev6_uMHbL4isJqNXNMDQIGS9R9kUgWr0nW1V7typS6tWsKU60s48O8mOLqoAPEMQoKhCDrOeoNCKq7oeytlf4NW8cYwgFs7kuOt2zpi-jGhED9cNMB3jM9QinlaJ5_MeRlbm6jS_rv8zRJn1hLsCv0JYWAAxhsDL46lX6RyrDADs-8DTkDzzVjlIY0hBj7ybS_0J-ptvwPwn6bg_sZTY8vtF1vhOvv-u-3YoGIrf9iRsDDAqZIXhkfQJCkEWFlQceO9-i6JwZ3RoaBVvvE15JRUF602NyPggbNO-bMVjaw",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"mapaez\",\n\t\"password\": \"1234\",\n\t\"authorities\": \"ROLE_ADMIN\",\n\t\"name\": \"manuel\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4444/auth/accounts",
+			"request": {
+				"url": "http://localhost:4444/auth/accounts",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"mapaez\",\n\t\"password\": \"1234\",\n\t\"isActive\": true\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4444/auth/authorities",
+			"request": {
+				"url": "http://localhost:4444/auth/authorities",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"authority\": \"ROLE_ADMIN, ROLE_USER, FOO_READ_USER\",\n\t\"username\": \"mapaez\",\n\t\"account\": \"http://localhost:9999/auth/accounts/1\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4444/auth/authorities/1",
+			"request": {
+				"url": "http://localhost:4444/auth/authorities/1",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"main\",\n\t\"authority\": \"FOO_READ_MAIN, FOO_READ_USER, FOO_READ\",\n\t\"account\": \"http://192.168.1.8:8888/tests/1\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4444/accounts",
+			"request": {
+				"url": "http://localhost:4444/accounts",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsiRE9PIiwiRk9PIiwiWU9PIiwiYWNjb3VudC1yZXNvdXJjZSJdLCJ1c2VyX25hbWUiOiJtYWluIiwic2NvcGUiOlsiRk9PIiwiWU9PIl0sImV4cCI6MTUwNzgyODU3MCwiYXV0aG9yaXRpZXMiOlsiRk9PX1JFQUQsIEZPT19SRUFEX1VTRVIiXSwianRpIjoiM2NhZGQ5MjItMDc5MC00NmI1LWEyNjAtYzE0MTEyMjNkNjcwIiwiY2xpZW50X2lkIjoiZ2F0ZXdheSJ9.v4lbZjP2wcFd5iLlL_-rgJi6jxFMSyMKjq5JLKqMWMK6GEGj3R3mflt3evIunV-30vZvFEh9TpbuNnoBoFbyljKz7kAlWORu9bSxqxH_X6kLQEFkeuGGPOxN3LZkXI-Qy__qEHJ1ovq9C4dB2SflC2zAo_51nD4mzA2BXBtrY1RZ9gdTUloZgNwVvPZsVpuZuQJMl_JGCqda0nClvGKXEoJ94JEEWWNnvfxlvz0RBzbL4PL6_2LJN-e__nxbJm6x7JZhHl4CHmdHBt-dlC6qNABy77WRTRG03swgXaOZMevbmstG8Sn-BmasGwITaBQyyFTg5A1AQwANDuONxKqklA",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"Antonio\",\n\t\"password\": \"1234\",\n\t\"authorities\": \"ROLE_ADMIN\",\n\t\"name\": \"lol\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4444/auth/accounts/2",
+			"request": {
+				"url": "http://localhost:4444/auth/accounts/2",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4444/auth/oauth/token",
+			"request": {
+				"url": "http://localhost:4444/auth/oauth/token",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "Content-Type",
+							"value": "application/x-www-form-urlencoded",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "gateway",
+							"type": "text"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "http://example.com",
+							"type": "text"
+						},
+						{
+							"key": "code",
+							"value": "g2QydX",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "1234",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4444/accounts/search/findByUsername?username=mapaez",
+			"request": {
+				"url": {
+					"raw": "http://localhost:4444/accounts/search/findByUsername?username=mapaez",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4444",
+					"path": [
+						"accounts",
+						"search",
+						"findByUsername"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "mapaez",
+							"equals": true
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsiRE9PIiwiRk9PIiwiWU9PIiwiYWNjb3VudC1yZXNvdXJjZSJdLCJ1c2VyX25hbWUiOiJtYXBhZXoiLCJzY29wZSI6WyJGT08iLCJZT08iXSwiZXhwIjoxNTEyNzU4NDUwLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOLCBST0xFX1VTRVIsIEZPT19SRUFEX1VTRVIiXSwianRpIjoiNDg3NDE0MjEtN2IwMS00NmM2LTk0NDctZmVkNTQxZGUyYmYwIiwiY2xpZW50X2lkIjoiZ2F0ZXdheSJ9.jxi7Pvc0YqaLkKr2uaajMO8HR43KZlo0-6XNAotCNJU0CaEjBgoS2Rsw6xcm3xpRW2Mc-ve_QXbPP0-zxq5mdRYLwue3HygnT3x0RkwT9BJfpt8hiosVh62uveuSCJ91KvkABnn23srMS9ipp7XNXS4-OgWYWJzGfbwbwG9S_x7iPdpBzY6hOFoyesUKrJuEv7CTGzJm0T5kC4XsJwoPi-irNMjyWyKhnWURY_7-IppoDzvrC4lXxdtuZKdzCdwsJ_K02Q7T-vHrq6iteUVU2u7Hb7Aij69ZLOqWJ7jwWlkQKne7EMC_XVywEbfpLlSTQMKrBEocPHpkJBWKgIjckA"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"manuel\",\n\t\"username\": \"mapaez\",\n\t\"isActive\": true,\n\t\"password\": 1234,\n\t\"authorities\": \"ROLE_ADMIN\"\n}"
+				},
+				"description": "This endpoint is role based protected. Ideal for testing roles"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4444/auth/oauth/token",
+			"request": {
+				"url": "http://localhost:4444/auth/oauth/token",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic Z2F0ZXdheToxMjM0",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "refresh_token",
+							"type": "text"
+						},
+						{
+							"key": "refresh_token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsiRE9PIiwiRk9PIiwiWU9PIiwiYWNjb3VudC1yZXNvdXJjZSJdLCJ1c2VyX25hbWUiOiJtYXBhZXoiLCJzY29wZSI6WyJGT08iLCJZT08iXSwiYXRpIjoiOGY0YmYwNTItZmY1Ni00MzNjLTg2NWMtN2M4NTQwOGYxYmEwIiwiZXhwIjoxNTE5ODA5MjQ4LCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOLCBST0xFX1VTRVIsIEZPT19SRUFEX1VTRVIiXSwianRpIjoiOGZhMjk4NzYtNTNkZC00MDBkLWI4YTUtY2FjMzllN2Y0ZGE5IiwiY2xpZW50X2lkIjoiZ2F0ZXdheSJ9.u2-xAeC4uGEwUwKhP_C0MmqyK2PeLF4RXDF6eyVwvaSuz_VksKWUdrA9A3y36o7SQUcCIEc65Qe4FPwWj1Amazg8bSoLozPa-_qSBTIyLYlR6eSJJ3Rj2ENUYQ0XbqXjhQ4gEb40Ymp59UIkZ2RiSWYU7ydS6qQ45M7N3Ww9tcV-XGtqV5ZOMf70WfdsSl-qX1q4WenrHmGt-nc0WCzTruQV_IuiuY2SnsrMp7wpLWLArGsN9znJy_0yu4PWhj2y2jwgVdiYTFYp3ons2OEIxu2Q-376oFQXbJ_-L8bVrOxj1kxQ4l8z7SL2KKCimCt0UOMjAEuwWn5N-4gF9ini2A",
+							"type": "text"
+						}
+					]
+				},
+				"description": "Refresh token"
+			},
+			"response": []
+		}
+	]
+}
