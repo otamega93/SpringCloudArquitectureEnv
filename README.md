@@ -1,5 +1,5 @@
 # SpringCloudArquitectureEnv
-Spring Cloud and Netflix OSS PoC to test architecture and shenanigans.
+Spring Cloud and Netflix OSS PoC to test architecture and shenanigans. (This is just a CloudBasedUserRegistration using the newest stable Spring Boot and Spring cloud Netflix, so if you're interestend in that project, feel free to use this one since has some minor improvements, like bugs fixes and the aforementioned Spring upgrade).
 
 # General gist
 The app is just a basic user registration in order to login (with Oauth2) so we can access every endpoint of the app. All of this is for testing purposes of the Spring Cloud and Netflix technologies. All here is for learning purposes only.
